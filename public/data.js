@@ -1,6 +1,3 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
 const pizzaData = [
   {
     name: "Focaccia",
@@ -45,36 +42,3 @@ const pizzaData = [
     soldOut: false,
   },
 ];
-
-function App() {
-  return (
-    <div>
-      <h1>Hello React </h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
-    </div>
-  );
-}
-
-function Pizza() {
-  return (
-    <div>
-      <h2>Pizza Salamino</h2>
-      <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
-      <img src="pizzas/spinaci.jpg" alt="" />
-    </div>
-  );
-}
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-
-// Strict mode will render twice but help to render easily
-
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
-
-//
