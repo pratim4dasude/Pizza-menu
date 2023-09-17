@@ -1,0 +1,11 @@
+[33mcommit 113f0828483fe470e0a031a7304fb46911c35a68[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;32mdev[m[33m)[m
+Author: pratim dasude <pratim4dasude@gmail.com>
+Date:   Sun Sep 17 13:20:52 2023 +0530
+
+    Starting file makeover
+
+[33mcommit 83275b2cd0a4cdfd78178458a8ec036ac1de791c[m
+Author: pratim4dasude <pratim4dasude@gmail.com>
+Date:   Sat Sep 16 11:40:00 2023 +0530
+
+    Initialize project using Create React App
