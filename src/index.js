@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import "./index.css";
 
 const pizzaData = [
   {
@@ -48,21 +49,103 @@ const pizzaData = [
 
 function App() {
   return (
-    <div>
-      <h1>Hello React </h1>
-      <Pizza />
-      <Pizza />
-      <Pizza />
+    <div className="container">
+      <Header />
+      <Menu />
+      <Footer />
     </div>
   );
 }
 
-function Pizza() {
+function Header() {
+  // const style = { color: "Red", fontSize: "22px", textTransform: "uppercase" };
   return (
-    <div>
-      <h2>Pizza Salamino</h2>
-      <p>Tomato, mozarella, ham, aragula, and burrata cheese</p>
-      <img src="pizzas/spinaci.jpg" alt="" />
+    <header className="header">
+      <h1>Pizza Company</h1>
+    </header>
+  );
+}
+
+function Menu() {
+  const pizzas = pizzaData;
+  const numpizzas = pizzas.length;
+
+  return (
+    <main className="menu">
+      <h2>Our Menu </h2>
+
+      {numpizzas > 0 ? (
+        <> 
+          <p>Authentic Resturant all organic Delicious pizza </p>
+          <ul className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </ul>
+        </>
+      ) : (
+        <p>Comming Soon</p>
+      )}
+
+      {/* <Pizza
+        name="Pizza Salamino"
+        ingredients="Tomato, mozarella, ham, aragula, and burrata cheese"
+        photoName="pizzas/spinaci.jpg"
+        price={10}
+      />
+
+      <Pizza
+        name="Pizza Fungi"
+        ingredients="Tomatos mushrooms"
+        price={12}
+        photoName="pizzas/funghi.jpg"
+      /> */}
+    </main>
+  );
+}
+
+function Pizza({ pizzaObj }) {
+  console.log(pizzaObj);
+
+  // if (pizzaObj.soldOut) return null;
+
+  return (
+    <li className={`pizza ${pizzaObj.soldOut ? 'sold-out':''}`}>
+      <img src={pizzaObj.photoName} alt={pizzaObj.name} />
+      <div>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.soldOut ?  "Sold out":pizzaObj.price }</span>
+      </div>
+    </li>
+  );
+}
+
+function Footer() {
+  // return React.createElement("footer", null, "we are open");
+  const hour = new Date().getHours();
+  console.log(hour);
+  const open = 12;
+  const close = 22;
+  const isopen = hour >= open && hour <= close;
+  console.log(isopen);
+
+  // if(hour >= open && hour <= close) alert("WE are Open"); else alert("WE are closed")
+
+  return (
+    <footer className="footer">
+      {isopen ? <Order close={close} /> : <p>Come Back Later</p>}
+    </footer>
+  );
+}
+
+function Order({ close }) {
+  return (
+    <div className="order">
+      <div className="order">
+        <p>WE ARE OPEN until {close}pm</p>
+        <button className="btn">Order</button>
+      </div>
     </div>
   );
 }
@@ -76,8 +159,3 @@ root.render(
     <App />
   </React.StrictMode>
 );
-
-// hello
-// make a cancelIdleCallback
-
-//
